@@ -35,7 +35,7 @@ class Client
         'persistent'      => true,
         'timeout'         => null,
         'connections'     => array(), // host, port, path, timeout, transport, persistent, timeout, config -> (curl, headers, url)
-        'roundRobin'      => false,
+        'roundRobin'      => true,
         'log'             => false,
         'retryOnConflict' => 0,
     );
@@ -493,7 +493,7 @@ class Client
     }
 
     /**
-     * @return \Connection\Strategy\StrategyInterface
+     * @return \Elastica\Connection\Strategy\StrategyInterface
      */
     public function getConnectionStrategy()
     {
