@@ -35,7 +35,7 @@ class Client
         'persistent'      => true,
         'timeout'         => null,
         'connections'     => array(), // host, port, path, timeout, transport, persistent, timeout, config -> (curl, headers, url)
-        'roundRobin'      => true,
+        'roundRobin'      => false,
         'log'             => false,
         'retryOnConflict' => 0,
     );
