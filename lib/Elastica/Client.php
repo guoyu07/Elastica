@@ -84,10 +84,12 @@ class Client
      */
     public function setServers(array $servers)
     {
-        foreach ($servers as $server) {
-            $this->setConfig(['connections' => $server]);
+        $connections = ['connections'];
+        foreach ($servers as $server => $port) {
+            $connections[] = ['host' => $server, 'port' => $port];
         }
 
+        $this->setConfig($connections);
         $this->_initConnections();
     }
 
