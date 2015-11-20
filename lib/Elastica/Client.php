@@ -78,6 +78,17 @@ class Client
         $this->_initConnections();
     }
 
+    public function setServers(array $servers)
+    {
+        $this->setConfigValue('connectionStrategy', 'RoundRobin');
+
+        foreach ($servers as $server) {
+            $this->setConfig(['connections' => $server]);
+        }
+
+        $this->_initConnections();
+    }
+
     /**
      * Inits the client connections
      */
