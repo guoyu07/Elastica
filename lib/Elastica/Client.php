@@ -78,15 +78,25 @@ class Client
         $this->_initConnections();
     }
 
+    /**
+     *
+     * @param array $servers
+     */
     public function setServers(array $servers)
     {
-        $this->setConfigValue('connectionStrategy', 'RoundRobin');
-
         foreach ($servers as $server) {
             $this->setConfig(['connections' => $server]);
         }
 
         $this->_initConnections();
+    }
+
+    /**
+     * @param string $strategy
+     */
+    public function setConnectionStrategy($strategy = 'RoundRobin')
+    {
+        $this->setConfigValue('connectionStrategy', $strategy);
     }
 
     /**
