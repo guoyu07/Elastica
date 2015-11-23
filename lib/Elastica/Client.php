@@ -84,21 +84,13 @@ class Client
      */
     public function setServers(array $servers)
     {
-        $connections = ['connections'];
-        foreach ($servers as $server => $port) {
-            $connections[] = ['host' => $server, 'port' => $port];
+        $connections = ['servers' => [], 'roundRobin' => true];
+        foreach ($servers['hosts'] as $host => $port) {
+            $connections['servers'][] = ['host' => $host, 'port' => $port];
         }
 
         $this->setConfig($connections);
         $this->_initConnections();
-    }
-
-    /**
-     * @param string $strategy
-     */
-    public function setConnectionStrategy($strategy = 'RoundRobin')
-    {
-        $this->setConfigValue('connectionStrategy', $strategy);
     }
 
     /**
