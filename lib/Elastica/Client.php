@@ -75,6 +75,7 @@ class Client
     {
         $this->setConfig($config);
         $this->_callback = $callback;
+        $this->setConfigValue('connectionStrategy', 'RoundRobin');
         $this->_initConnections();
     }
 
@@ -84,12 +85,12 @@ class Client
      */
     public function setServers(array $servers)
     {
-        $connections = ['servers' => [], 'roundRobin' => true];
+        $configs = ['servers' => [], 'roundRobin' => true];
         foreach ($servers['hosts'] as $host => $port) {
-            $connections['servers'][] = ['host' => $host, 'port' => $port];
+            $configs['servers'][] = ['host' => $host, 'port' => $port];
         }
 
-        $this->setConfig($connections);
+        $this->setConfig($configs);
         $this->_initConnections();
     }
 
